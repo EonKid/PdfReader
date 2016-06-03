@@ -19,6 +19,111 @@
     // Override point for customization after application launch.
     return YES;
 }
+/* fetch data db
+-(void)usingDeepLinking:(NSString *)docId{
+    
+    
+    recentViewedDoc = [[DBManager sharedDatabase] getdocId:[NSString stringWithFormat:@"SELECT * FROM recentViewed"]];
+    getDocId = docId;
+    self.reachability = [Reachability reachabilityForInternetConnection];
+    
+    NetworkStatus internetStatus = [reachability currentReachabilityStatus];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(checkNetworkStatus:)
+                                                 name:kReachabilityChangedNotification object:nil];
+    
+    [reachability startNotifier];
+    
+    if (internetStatus != NotReachable) {
+        
+        self.currentRequest = [HttpClient new];
+        self.currentRequest.delegate = self;
+        
+        [self.currentRequest getDocuments:getDocId];
+        
+    }
+    else {
+        
+        UIAlertView *alert = [[UIAlertView alloc] init];
+        [alert setTitle:@"No Connectivity"];
+        [alert setMessage:@"Without an internet connection. This application has limited functionality."];
+        [alert setDelegate:self];
+        [alert addButtonWithTitle:@"Work offline"];
+        [alert addButtonWithTitle:@"Reconnect"];
+        [alert show];
+    }
+    
+}
+ 
+ #pragma mark save And Load
+ 
+ -(void) saveUpdateDatabaseAndLoadFromURL
+ {
+ AppManager *appManager = [AppManager appManager];
+ 
+ NSLog(@"KAppDelegate.recentViewedDoc..%d",[recentViewedDoc count]);
+ 
+ 
+ Document *documentToView=appManager.activeDocument;
+ NSString *getDocIdFromURL = [NSString stringWithFormat:@"%@",documentToView.docid];
+ 
+ if([recentViewedDoc count]>0)
+ {
+ for (int k=0; k<[recentViewedDoc count]; k++)
+ {
+ NSString *value = [[recentViewedDoc objectAtIndex:k] objectForKey:@"docId"];
+ 
+ NSDateFormatter *DateFormatter=[[NSDateFormatter alloc] init];
+ [DateFormatter setDateFormat:@"yyyy-MM-dd hh:mm:ss"];
+ 
+ if([value isEqualToString:getDocIdFromURL])
+ {
+ NSString *query = [NSString stringWithFormat:@"UPDATE recentViewed SET  date='%@' WHERE docId='%@'",[DateFormatter stringFromDate:[NSDate date]],value];
+ 
+ [[DBManager sharedDatabase] executeQuery:query];
+ }
+ else
+ {
+ NSString *query = [NSString stringWithFormat:@"INSERT INTO recentViewed (docId,date,thumbURL,title) VALUES ('%@','%@','%@','%@')",documentToView.docid,[DateFormatter stringFromDate:[NSDate date]],documentToView.thumbUrl,documentToView.title];
+ 
+ [[DBManager sharedDatabase] executeQuery:query];
+ }
+ }
+ }
+ 
+ if([recentViewedDoc count]==0)
+ {
+ NSDateFormatter *DateFormatter=[[NSDateFormatter alloc] init];
+ [DateFormatter setDateFormat:@"yyyy-MM-dd hh:mm:ss"];
+ 
+ NSString *query = [NSString stringWithFormat:@"INSERT INTO recentViewed (docId,date,thumbURL,title) VALUES ('%@','%@','%@','%@')",documentToView.docid,[DateFormatter stringFromDate:[NSDate date]],documentToView.thumbUrl,documentToView.title];
+ 
+ [[DBManager sharedDatabase] executeQuery:query];
+ }
+ 
+ BookViewController *obj_bookVC;
+ if ([UIDevice currentDevice].userInterfaceIdiom==UIUserInterfaceIdiomPad)
+ {
+ obj_bookVC=[[BookViewController alloc]initWithNibName:@"BookViewController" bundle:nil];
+ 
+ }
+ else
+ {
+ obj_bookVC=[[BookViewController alloc]initWithNibName:@"BookVC" bundle:nil];
+ }
+ obj_bookVC.document=appManager.activeDocument;
+ [[GAI sharedInstance].defaultTracker sendEventWithCategory:appManager.activeDocument.title
+ withAction:@"View"
+ withLabel:@"1"
+ withValue:nil];
+ [UIPasteboard generalPasteboard].string = @"";
+ 
+ [self.nav pushViewController:obj_bookVC animated:YES];
+ }
+
+ 
+ */
+
 
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
