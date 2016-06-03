@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="a7q-b6-ihH">
+                                <rect key="frame" x="0.0" y="514" width="600" height="2"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="2" id="aVT-Jg-RM3"/>
+                                </constraints>
+                            </progressView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dtw-QP-p4D">
+                                <rect key="frame" x="20" y="540" width="560" height="40"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="SIK-8y-I4p"/>
+                                </constraints>
+                                <state key="normal" title="Download">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="btnPressDownload:" destination="BYZ-38-t0r" eventType="touchUpInside" id="pyX-x0-xE4"/>
+                                </connections>
+                            </button>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" directionalLockEnabled="YES" pagingEnabled="YES" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4vX-FV-cQN">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="506"/>
+                                <subviews>
+                                    <webView contentMode="scaleToFill" scalesPageToFit="YES" paginationMode="rightToLeft" translatesAutoresizingMaskIntoConstraints="NO" id="VVI-i3-2TS">
+                                        <rect key="frame" x="20" y="20" width="560" height="480"/>
+                                        <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="deviceRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="400" id="ZAw-4H-O7f"/>
+                                            <constraint firstAttribute="height" constant="480" id="hvs-Wz-iGe"/>
+                                        </constraints>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="ZAw-4H-O7f"/>
+                                            </mask>
+                                        </variation>
+                                    </webView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="VVI-i3-2TS" firstAttribute="leading" secondItem="4vX-FV-cQN" secondAttribute="leading" constant="20" id="1gV-yv-LEd"/>
+                                    <constraint firstAttribute="height" constant="506" id="JXa-ag-0UL"/>
+                                    <constraint firstAttribute="bottom" secondItem="VVI-i3-2TS" secondAttribute="bottom" constant="20" id="Ss5-aJ-Vgf"/>
+                                    <constraint firstItem="VVI-i3-2TS" firstAttribute="top" secondItem="4vX-FV-cQN" secondAttribute="top" constant="20" id="ZIR-z9-WBD"/>
+                                    <constraint firstAttribute="trailing" secondItem="VVI-i3-2TS" secondAttribute="trailing" constant="20" id="j8C-J5-eUr"/>
+                                    <constraint firstItem="VVI-i3-2TS" firstAttribute="centerX" secondItem="4vX-FV-cQN" secondAttribute="centerX" id="tl6-Wd-GsL"/>
+                                </constraints>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="dtw-QP-p4D" firstAttribute="leading" secondItem="a7q-b6-ihH" secondAttribute="leading" id="35a-Rw-k4m"/>
+                            <constraint firstItem="4vX-FV-cQN" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="3HY-uu-oQx"/>
+                            <constraint firstAttribute="trailing" secondItem="dtw-QP-p4D" secondAttribute="trailing" constant="20" id="AHJ-8k-Byt"/>
+                            <constraint firstItem="a7q-b6-ihH" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="IPv-Y7-ll4"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="dtw-QP-p4D" secondAttribute="bottom" constant="20" id="J8r-wE-4OX"/>
+                            <constraint firstAttribute="trailing" secondItem="4vX-FV-cQN" secondAttribute="trailing" id="NAn-b9-de3"/>
+                            <constraint firstItem="a7q-b6-ihH" firstAttribute="top" secondItem="4vX-FV-cQN" secondAttribute="bottom" constant="8" id="QSw-NS-J7X"/>
+                            <constraint firstItem="dtw-QP-p4D" firstAttribute="top" secondItem="4vX-FV-cQN" secondAttribute="bottom" constant="34" id="b3L-dX-y03"/>
+                            <constraint firstItem="dtw-QP-p4D" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="20" id="eVC-HX-PZs"/>
+                            <constraint firstAttribute="trailing" secondItem="a7q-b6-ihH" secondAttribute="trailing" id="gLn-w6-LPX"/>
+                            <constraint firstItem="4vX-FV-cQN" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="hCF-eT-C1x"/>
+                            <constraint firstItem="4vX-FV-cQN" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="o7Z-Mz-MkT"/>
+                            <constraint firstItem="dtw-QP-p4D" firstAttribute="trailing" secondItem="a7q-b6-ihH" secondAttribute="trailing" id="tYs-hl-tYV"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="35a-Rw-k4m"/>
+                                <exclude reference="tYs-hl-tYV"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <connections>
+                        <outlet property="progress" destination="a7q-b6-ihH" id="mpJ-d6-Wtk"/>
+                        <outlet property="webView" destination="VVI-i3-2TS" id="iD1-aw-cvX"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="288" y="355"/>
+        </scene>
+    </scenes>
+</document>
